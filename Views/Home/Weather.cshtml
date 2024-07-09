@@ -1,0 +1,27 @@
+﻿@model CityWeather;
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="margin-left margin-top">
+		<h1>@ViewData["Title"]</h1>
+		<div class="flex">
+			<div class="flex-borderless">
+				<div>
+					<h3>@Model.CityName</h3>
+					<p class="text-grey">@Model.DateAndTime.ToString("dd MMM yyyy")</p>
+					<p class="text-grey">@Model.DateAndTime.ToString("h:mm tt")</p>
+				</div>
+				<div class="inline-block border-left">
+					<h1>@Model.TemperatureFahrenheit<text class="text-grey">&deg;F</text></h1>
+				</div>
+			</div>
+		</div>
+		<p class="text-center"><a href="/">Back to Weather Home Page</a></p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@model List<CityWeather>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="margin-left margin-top">
+		<h1>@ViewData["Title"]</h1>
+		<div class="flex">
+			@foreach (var city in Model)
+			{
+				string divClass = "width-auto flex-borderless clear ";
+				if (city.TemperatureFahrenheit < 44 )
+				{
+					divClass += "blue-back";
+				}
+				else if (city.TemperatureFahrenheit < 74)
+				{
+					divClass += "green-back";
+				}
+				else if (city.TemperatureFahrenheit >= 75)
+				{
+					divClass += "orange-back";
+				}
+
+				<div class="@divClass">
+					<div>
+						<h3>@city.CityName</h3>
+						<p class="text-dark-grey">@city.DateAndTime.ToString("h:mm tt")</p>
+						<a href="/weather/@city.CityUniqueCode">Details</a>
+					</div>
+					<div class="inline-block border-left">
+						<h1>@city.TemperatureFahrenheit<text class="text-dark-grey">&deg;F</text></h1>					
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</body>
+</html>
